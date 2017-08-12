@@ -8,16 +8,13 @@ namespace trajectory
 {
     class Program
     {
+
+
         void showInfo()
         {
             Console.Write("-Enemy Location");
             Console.Write("-Power:");
             Console.Write("-Angle:");
-        }
-
-        static void cmd_exit()
-        {
-
         }
 
         static void Main(string[] args)
@@ -29,27 +26,37 @@ namespace trajectory
             double gravity = 9.8;
             double power = 0;
             double angle = 0;
-            //double enemy_Xloc = 100;
-            double enemy_Yloc = 0;
+            //double enemy_Yloc;
             double missile_impact_range = 10;
-            int Level1 = 80;
-            int Level2 = 150;
+            int[] Level = { 80, 120, 150 };
+            string[] Rank = { "Private", "Sergeant", "Lieutenant" };
+            int diffculty;
             int totalTries = 2;
-            
 
-            //double x_dist = 0;
-            //double y_dist = 0;          
-            //double x_initVel = 0;       //initial velocity on horrizontal axis
-            //double y_initVel = 0;       //initial velocity on verical axis
-            //double t = 0;               //time traveling
 
-            
+            Console.WriteLine("Please Select difficulty.\n -1. Easy.\n -2. Medium.\n -3. Hard.");
+
+            while (!int.TryParse(Console.ReadLine(), out diffculty) || diffculty < 1 || diffculty > 3)
+            {
+                Console.Clear();
+                Console.WriteLine("Please Select difficulty.\n -1. Easy.\n -2. Medium.\n -3. Hard.");
+            }
+
+            Console.WriteLine("Rank: " + Rank[diffculty-1]);
+
+            for (int i = 0; i<3; i++)
+            {
+                System.Threading.Thread.Sleep(500);
+                Console.Write(".");
+            }
+            System.Threading.Thread.Sleep(2000);
 
             //declare enemy position
             Random tr = new Random();
-            double range = tr.NextDouble() * 40;
-            double enemy_Xloc = Level1 + range;
-            
+            double range = tr.NextDouble() * 40 * (diffculty*1.025);
+            double enemy_Xloc = Level[diffculty-1] + range;
+             
+
 
             replay:
 
@@ -60,10 +67,19 @@ namespace trajectory
             void info()
             {
                 Console.Clear();
+
                 Console.WriteLine("The enemy is {0:0.00} away.\n", enemy_Xloc);
                 Console.WriteLine("-Power: {0} \n-Angle is: {1}\n", power, angle);
             }
 
+            /*if (power == null)
+            {
+                power = 0;
+            }
+            if (angle == null)
+            {
+                angle = 0;
+            }*/
 
             //Request for power
             info();
@@ -93,8 +109,8 @@ namespace trajectory
             info();
             double y_initVel = power * Math.Sin(Math.PI * angle / 180.0);           //initial velocity on verical axis 
             double x_initVel = power * Math.Cos(Math.PI * angle / 180.0);           //initial velocity on horrizontal axis
-            Console.Write("Initial Velocity on Y-axis is: {0:0.00} m/s\n", y_initVel);
-            Console.Write("Initial Velocity on X-axis is: {0:0.00} m/s\n", x_initVel);
+            //Console.Write("Initial Velocity on Y-axis is: {0:0.00} m/s\n", y_initVel);
+            //Console.Write("Initial Velocity on X-axis is: {0:0.00} m/s\n", x_initVel);
 
 
             //Calulating Time
@@ -143,7 +159,7 @@ namespace trajectory
             //Calculate distance from the target
 
             double x_dif = Math.Abs(enemy_Xloc - x_dist);
-            double y_dif = Math.Abs(enemy_Yloc - y_dist);
+            //double y_dif = Math.Abs(enemy_Yloc - y_dist);
 
 
             Console.WriteLine("\n\tThe missile dropped {0:0.00}m away from the target.", x_dif);

@@ -1,0 +1,6 @@
+D:\Users\Hou Sheng Chiang\Documents\Visual Studio 2017\Projects\Trajectory\CurseTop\bin\Debug\CurseTop.exe.config
+D:\Users\Hou Sheng Chiang\Documents\Visual Studio 2017\Projects\Trajectory\CurseTop\bin\Debug\CurseTop.exe
+D:\Users\Hou Sheng Chiang\Documents\Visual Studio 2017\Projects\Trajectory\CurseTop\bin\Debug\CurseTop.pdb
+D:\Users\Hou Sheng Chiang\Documents\Visual Studio 2017\Projects\Trajectory\CurseTop\obj\Debug\CurseTop.csprojResolveAssemblyReference.cache
+D:\Users\Hou Sheng Chiang\Documents\Visual Studio 2017\Projects\Trajectory\CurseTop\obj\Debug\CurseTop.exe
+D:\Users\Hou Sheng Chiang\Documents\Visual Studio 2017\Projects\Trajectory\CurseTop\obj\Debug\CurseTop.pdb
